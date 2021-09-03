@@ -6,6 +6,7 @@ import ToDoData from "./data/tododata";
 const App = () => {
   const [toDo, setToDo] = useState(ToDoData);
   const toDoInput = useRef();
+  const errorText = useRef();
 
   const handleChange = (id) => {
     // looping over array and returning a new version of the array,
@@ -25,24 +26,44 @@ const App = () => {
 
   const handleAddClick = (e) => {
     e.preventDefault();
-
-    // get the last item in array's id, and add 1 to it.
-    // This sets new object's id as 1 more than previous id
-    let toDoLast = toDo.length - 1;
-    let newId = toDo[toDoLast].id + 1;
-
     let inputValue = toDoInput.current.value;
 
-    let newTask = {
-      id: newId,
-      task: inputValue,
-      completed: false,
-    };
+    if (inputValue !== "") {
+      // Only if there's items in the array, add item this way. Prevents bug if all items are removed
+      if (toDo.length > 0) {
+        // get the last item in array's id, and add 1 to it.
+        // This sets new object's id as 1 more than previous id
+        let toDoLast = toDo.length - 1;
+        let newId = toDo[toDoLast].id + 1;
 
-    // adding/pushing element to end of array
-    setToDo((toDo) => [...toDo, newTask]);
+        let newTask = {
+          id: newId,
+          task: inputValue,
+          completed: false,
+        };
 
-    toDoInput.current.value = "";
+        // adding/pushing element to end of array
+        setToDo((toDo) => [...toDo, newTask]);
+
+        toDoInput.current.value = "";
+        errorText.current.textContent = "";
+      }
+      // If there are no items in array, add the item this way
+      else {
+        setToDo((toDo) => [
+          ...toDo,
+          {
+            id: 1,
+            task: inputValue,
+            completed: false,
+          },
+        ]);
+        toDoInput.current.value = "";
+        errorText.current.textContent = "";
+      }
+    } else {
+      errorText.current.textContent = "Please add a task";
+    }
   };
 
   const handleRemoveClick = (id) => {
@@ -57,6 +78,7 @@ const App = () => {
       <div className="input-container">
         <input type="text" ref={toDoInput} />
         <button onClick={(e) => handleAddClick(e)}>ADD TASK</button>
+        <p className="errorText" ref={errorText} />
       </div>
       <div className="to-do-container">
         {toDo.map((item) => (
