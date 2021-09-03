@@ -6,23 +6,13 @@ const todos = [
   },
   {
     id: 2,
-    task: "Make Dinner",
-    completed: true,
+    task: "Cook Dinner",
+    completed: false,
   },
   {
     id: 3,
     task: "Buy Groceries",
-    completed: false,
-  },
-  {
-    id: 4,
-    task: "Clean Yard",
-    completed: false,
-  },
-  {
-    id: 5,
-    task: "Feed Fish",
-    completed: false,
+    completed: true,
   },
 ];
 

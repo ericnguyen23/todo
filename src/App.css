@@ -1,16 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 
 body {
-  background-color: #fab23f;
+  background-color: #ffffff;
   font-family: "Raleway", sans-serif;
-  color: white;
+  color: rgb(53, 53, 53);
 }
 
 .task-container {
   margin: 24px;
-  padding: 48px;
-  border: 1px solid white;
-  border-radius: 12px;
+  padding: 24px;
 }
 
 .todo-list {
@@ -19,7 +17,7 @@ body {
   width: auto;
   display: flex;
   flex-direction: column;
-  border: 1px solid #efefef;
+  border-bottom: 1px solid #ffc15e;
 }
 
 .todo-item {
@@ -28,8 +26,7 @@ body {
   align-items: center;
   padding: 20px 30px;
   width: auto;
-  font-weight: 100;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #333333;
 }
 
@@ -56,20 +53,56 @@ input[type="checkbox"]:focus {
 }
 
 .input-container {
-  margin-top: 24px;
+  margin: 24px 0;
 }
 
 .input-container input,
 .input-container button {
-  border: none;
+  border: 1px solid #ffc15e;
   padding: 12px 24px;
   border-radius: 12px;
+}
+
+.input-container button {
+  background-color: #ffc15e;
+  color: #333333;
 }
 
 .input-container input {
   margin-right: 12px;
 }
 
+.input-container input:focus {
+  outline-width: 0;
+}
+
 button {
   cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  body {
+    color: red;
+  }
+
+  .task-container {
+    margin: 12px;
+    padding: 12px;
+  }
+
+  .todo-item {
+    padding: 14px 0px;
+    font-size: 1rem;
+  }
+
+  .input-container input,
+  .input-container button,
+  .todo-item button {
+    padding: 8px 18px;
+    border-radius: 6px;
+  }
+
+  .input-container input {
+    margin-right: 10px;
+  }
 }
