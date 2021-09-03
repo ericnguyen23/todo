@@ -41,6 +41,8 @@ const App = () => {
 
     // adding/pushing element to end of array
     setToDo((toDo) => [...toDo, newTask]);
+
+    toDoInput.current.value = "";
   };
 
   const handleRemoveClick = (id) => {

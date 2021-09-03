@@ -81,10 +81,6 @@ button {
 }
 
 @media (max-width: 480px) {
-  body {
-    color: red;
-  }
-
   .task-container {
     margin: 12px;
     padding: 12px;
