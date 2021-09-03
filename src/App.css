@@ -69,3 +69,7 @@ input[type="checkbox"]:focus {
 .input-container input {
   margin-right: 12px;
 }
+
+button {
+  cursor: pointer;
+}
